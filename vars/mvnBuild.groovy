@@ -13,7 +13,7 @@ def call() {
 //         }
 
         stage("Package Artifact Jar") {
-            sh "maven coe package -DskipTests=true"
+            sh "maven-coe package -DskipTests=true"
         }
        
     }
