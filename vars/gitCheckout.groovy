@@ -1,9 +1,9 @@
-def call(Map stageParams){
+def call(){
 
 	checkout([
            $class: 'GitSCM', 
            branches: [[name: '*/main']],
            extensions: [], 
-           userRemoteConfigs: [[url: 'https://github.com/neerajparuthi/jenkins_shared_libs.git']]])
+           userRemoteConfigs: [[url: 'https://github.com/neerajparuthi/T24-shared-libraries.git']]])
 
 }
