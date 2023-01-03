@@ -6,11 +6,11 @@ def call(Map config=[:]) {
      echo config.message
      echo Constants.URL_WEBHOOK
     office365ConnectorSend Constants.URL_WEBHOOK
-     office365ConnectorWebhooks([
-            [name: "Office 365", url: Constants.URL_WEBHOOK, notifyBackToNormal: true, notifyFailure: true, notifyRepeatedFailure: true, notifySuccess: true, notifyAborted: true]
-        ])
+    
   } else {
-      //echo Constants.TEAMS_MESSAGE
+      // office365ConnectorWebhooks([
+       //     [name: "Office 365", url: Constants.URL_WEBHOOK, notifyBackToNormal: true, notifyFailure: true, notifyRepeatedFailure: true, notifySuccess: true, notifyAborted: true]
+        // ])
       //echo config.message
   }
 }
