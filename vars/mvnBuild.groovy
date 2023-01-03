@@ -1,5 +1,5 @@
 def call() {
-      node {
+    //  node {
 //        stage("Compile") {
 //             sh "maven-coe clean compile"
 //         }
@@ -16,5 +16,5 @@ def call() {
             sh "mvn package -DskipTests=true"
         
        
-    }
+  //  }
 }
