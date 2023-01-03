@@ -47,6 +47,11 @@ pipeline {
                 deploy()
             }
         }
+        stage('Notify'){
+            steps{
+                notify(type: "teams")
+            }
+        }
         
     }
      post { 
