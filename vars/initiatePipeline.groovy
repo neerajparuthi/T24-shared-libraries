@@ -1,27 +1,59 @@
 def call(){
-
 pipeline {
-    agent none 
+    agent any
+    tools {
+        maven 'maven-coe'
+    }
+    environment {
+        DATE = new Date().format('dd.M')
+        TAG = "${DATE}_${BUILD_NUMBER}"
+    }
     stages {
-        stage('gitCheckout') {
-            //agent { docker 'maven:3.8.1-adoptopenjdk-11' } 
-            agent any
+        stage('Git Checkout') {
             steps {
-                echo 'Hello, Maven'
-                
                 gitCheckout()
             }
         }
-        stage('Build code') {
-            agent any 
-            steps {
-                echo 'Hello, JDK'
-                sh 'mvn clean package'
+        stage('Compiling code') {
+          steps {
+            mvnBuild()
+          }
+        }
+        stage('SonarQube Analysis') {
+            environment {
+                SCANNER_HOME = tool 'Sonar-Scanner'
             }
+            steps {
+               sonar_scan()
+            }
+        }
+        stage('SonarQuality gates'){
+           steps {
+             sonar_qgates()  
+           } 
+        }
+        stage('Docker image build'){
+            steps{
+                docker_build()
+            }
+        }
+        stage('Docker image push to nexus'){
+            steps{
+                image_push_to_nexus()
+            }
+        }
+        stage('Deploy'){
+            steps{
+                deploy()
+            }
+        }
+        
+    }
+     post { 
+        always { 
+            cleanWs()
         }
     }
 }
-
-
-
+    
 }
