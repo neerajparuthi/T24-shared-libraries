@@ -1,0 +1,2 @@
+variables:
+  java_version: '1.19'
