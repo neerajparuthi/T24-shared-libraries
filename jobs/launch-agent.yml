@@ -1,0 +1,4 @@
+pool:
+  name: "Self Hosted Pool"
+  #vmImage: ubuntu-latest
+  #name: "docker_pool"
