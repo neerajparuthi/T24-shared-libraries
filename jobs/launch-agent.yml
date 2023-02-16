@@ -8,12 +8,12 @@
 parameters:
   serviceConnection: ''
 
-jobs:
-- job: LaunchAgent
-  pool:
-    name: 'Hosted Ubuntu 1604'
+# jobs:
+# - job: LaunchAgent
+#   pool:
+#     name: 'Hosted Ubuntu 1604'
 
-  steps:
-  - checkout: none
-  - script: |
+steps:
+ - checkout: none
+ - script: |
       echo "hello from external repository"
