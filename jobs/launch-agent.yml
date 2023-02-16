@@ -1,6 +1,19 @@
-trigger: none
+#trigger: none
 
-pool:
-  name: "Self Hosted Pool"
+#pool:
+#  name: "Self Hosted Pool"
   #vmImage: ubuntu-latest
   #name: "docker_pool"
+  
+parameters:
+  serviceConnection: ''
+
+jobs:
+- job: LaunchAgent
+  pool:
+    name: 'Hosted Ubuntu 1604'
+
+  steps:
+  - checkout: none
+  - script: |
+      echo "hello from external repository"
