@@ -1,3 +1,5 @@
+trigger: none
+
 pool:
   name: "Self Hosted Pool"
   #vmImage: ubuntu-latest
